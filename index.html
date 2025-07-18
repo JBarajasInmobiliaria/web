@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JB INMOBILIARIA - Inmobiliaria de Lujo</title>
+    <title>JB INMOBILIARIA - Inmobiliaria</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <style>
         :root {
             --bg-dark: #111111;
@@ -33,17 +32,20 @@
             overflow: hidden;
             height: 100vh;
         }
-        #hero-video {
+        .hero-background {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 0;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071');
+            background-size: cover;
+            background-position: center;
+            animation: kenburns 20s ease-out infinite alternate;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         .hero-overlay {
             position: absolute;
@@ -51,7 +53,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
         .hero-content {
@@ -118,7 +120,7 @@
         }
         .luxury-button:hover {
             background-color: var(--accent-gold-dark);
-            box-shadow: 0 10px 20px -5px rgba(192, 160, 98, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(192, 160, 98, 0.4), 0 0 15px rgba(192, 160, 98, 0.3);
             transform: translateY(-3px);
         }
         .nav-luxury {
@@ -247,6 +249,65 @@
             justify-content: center;
             font-size: 1.25rem;
         }
+        .contact-card {
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .contact-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2);
+        }
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.5rem;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+        .contact-card:hover::after {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px var(--accent-gold);
+        }
+        .whatsapp-icon {
+            animation: pulse-whatsapp 2s infinite;
+        }
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .philosophy-card {
+            transition: transform 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .philosophy-card:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.05);
+        }
+        .ai-section-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(192, 160, 98, 0.1), transparent 50%);
+            animation: rotate-glow 30s linear infinite;
+            transform-origin: center center;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes rotate-glow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-dark">
@@ -255,7 +316,9 @@
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <a href="#inicio" class="text-2xl font-bold luxury-font tracking-wider text-white">JB INMOBILIARIA</a>
+                    <a href="#inicio">
+                        <img src="https://i.imgur.com/K3SiOmK.png" alt="JB Inmobiliaria Logo" class="h-12">
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
@@ -284,18 +347,15 @@
 
     <!-- Hero Section -->
     <section id="inicio" class="hero-section flex items-center justify-center text-center text-white">
+        <div class="hero-background"></div>
         <div class="hero-overlay"></div>
-        <video autoplay muted loop playsinline id="hero-video">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-shot-of-a-luxurious-mansion-39563-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
         <div class="hero-content">
             <div class="animate-on-scroll">
-                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight luxury-font text-shadow-lg">El Arte de Vivir Excepcionalmente</h1>
-                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-200">Descubra una selección curada de las propiedades más exclusivas. En JB Inmobiliaria, transformamos sus aspiraciones en realidad.</p>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight luxury-font" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">El Arte de Vivir Excepcionalmente</h1>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-200" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.5);">Descubra una selección curada de las propiedades más exclusivas. En JB Inmobiliaria, transformamos sus aspiraciones en realidad.</p>
                 <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
                     <a href="#propiedades" class="luxury-button w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-lg shadow-lg inline-flex items-center justify-center"><i class="fas fa-th-large mr-3"></i>Ver Propiedades</a>
-                    <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center justify-center border border-gray-400 hover:bg-white hover:text-black transition-colors"><i class="fas fa-phone mr-3"></i>Contactar</a>
+                    <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center justify-center border-2 border-white hover:bg-white hover:text-black transition-colors"><i class="fas fa-phone mr-3"></i>Contactar</a>
                 </div>
             </div>
         </div>
@@ -323,9 +383,9 @@
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto">Más que una inmobiliaria, somos arquitectos de experiencias. Nuestro legado se construye sobre la confianza, la excelencia y un servicio que trasciende lo convencional.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="text-center animate-on-scroll"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-bullseye"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Misión</h3><p class="text-gray-600">Conectar a nuestros clientes con propiedades extraordinarias que definen un estilo de vida, a través de una asesoría íntegra y personalizada.</p></div>
-                    <div class="text-center animate-on-scroll" style="transition-delay: 0.2s;"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-eye"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Visión</h3><p class="text-gray-600">Ser el referente indiscutible en el sector inmobiliario de lujo, reconocidos por nuestra curaduría impecable y la creación de valor duradero para nuestros clientes.</p></div>
-                    <div class="text-center animate-on-scroll" style="transition-delay: 0.4s;"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-gem"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Valores</h3><p class="text-gray-600">Excelencia, discreción, integridad y una pasión inquebrantable por la arquitectura y el diseño son los pilares de nuestro trabajo diario.</p></div>
+                    <div class="text-center animate-on-scroll philosophy-card"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-bullseye"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Misión</h3><p class="text-gray-600">Conectar a nuestros clientes con propiedades extraordinarias que definen un estilo de vida, a través de una asesoría íntegra y personalizada.</p></div>
+                    <div class="text-center animate-on-scroll philosophy-card" style="transition-delay: 0.2s;"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-eye"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Visión</h3><p class="text-gray-600">Ser el referente indiscutible en el sector inmobiliario de lujo, reconocidos por nuestra curaduría impecable y la creación de valor duradero para nuestros clientes.</p></div>
+                    <div class="text-center animate-on-scroll philosophy-card" style="transition-delay: 0.4s;"><div class="text-4xl text-accent-gold mb-4"><i class="fas fa-gem"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-2 luxury-font">Valores</h3><p class="text-gray-600">Excelencia, discreción, integridad y una pasión inquebrantable por la arquitectura y el diseño son los pilares de nuestro trabajo diario.</p></div>
                 </div>
             </div>
         </section>
@@ -334,7 +394,7 @@
         <section id="propiedades" class="py-24 md:py-32 section-dark">
             <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 animate-on-scroll"><h2 class="text-4xl md:text-5xl font-bold text-white mb-4 luxury-font">Propiedades Destacadas</h2><div class="luxury-divider"></div></div>
-                <div class="flex flex-wrap justify-center gap-4 mb-12 animate-on-scroll"><select id="filter-type" class="bg-gray-700 text-white border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-gold"><option value="all">Tipo de Propiedad</option><option value="terreno">Terreno</option><option value="casa">Casa</option><option value="penthouse">Penthouse</option><option value="local">Local</option></select><select id="filter-price" class="bg-gray-700 text-white border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-gold"><option value="all">Rango de Precio</option><option value="1">$0 - $1,000,000</option><option value="2">$1,000,000 - $2,000,000</option><option value="3">$2,000,000+</option></select><select id="filter-location" class="bg-gray-700 text-white border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-gold"><option value="all">Ubicación</option><option value="colinas">Colinas del Sol</option><option value="valle">Valle Escondido</option><option value="marina">La Marina</option></select></div>
+                <div class="flex flex-wrap justify-center gap-4 mb-12 animate-on-scroll"><select id="filter-type" class="bg-gray-700 text-white border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-gold"><option value="all">Tipo de Propiedad</option><option value="terreno">Terreno</option><option value="casa">Casa</option></select></div>
                 <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </div>
         </section>
@@ -367,16 +427,16 @@
             <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20 animate-on-scroll"><h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 luxury-font">Testimonios</h2><div class="luxury-divider"></div><p class="text-lg text-gray-600 max-w-3xl mx-auto">La confianza de nuestros clientes es nuestro activo más valioso.</p></div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" alt="Cliente Satisfecha" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Sofia Loren</h4><p class="text-gray-500 text-sm">Inversionista</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"El profesionalismo de JB Inmobiliaria es inigualable. Encontraron la inversión perfecta para mi portafolio con una discreción y eficacia absolutas."</p></div>
-                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll" style="transition-delay: 0.2s;"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&auto=format&fit=crop" alt="Cliente Satisfecho" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Carlos Vela</h4><p class="text-gray-500 text-sm">Empresario</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"El proceso de compra fue transparente y sorprendentemente sencillo. Su atención al detalle y servicio personalizado marcan la diferencia."</p></div>
-                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll" style="transition-delay: 0.4s;"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop" alt="Clienta Satisfecha" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Ana de Armas</h4><p class="text-gray-500 text-sm">Propietaria</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"Desde el primer contacto hasta la firma, el servicio fue impecable. La dedicación del equipo me dio una tranquilidad invaluable."</p></div>
+                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400" alt="Cliente Satisfecho" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Marcelo Luna</h4><p class="text-gray-500 text-sm">Empresario Local</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"El profesionalismo de JB Inmobiliaria es inigualable. Encontraron la inversión perfecta para mi portafolio con una discreción y eficacia absolutas."</p></div>
+                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll" style="transition-delay: 0.2s;"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=400" alt="Cliente Satisfecho" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Miguel Barajas</h4><p class="text-gray-500 text-sm">Dueño de Negocio</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"El proceso de compra fue transparente y sorprendentemente sencillo. Su atención al detalle y servicio personalizado marcan la diferencia."</p></div>
+                    <div class="premium-card bg-white rounded-lg p-8 shadow-sm animate-on-scroll" style="transition-delay: 0.4s;"><div class="flex items-center mb-5"><img src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=400" alt="Cliente Satisfecho" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-gold"><div><h4 class="text-lg font-bold text-gray-900 luxury-font">Ernesto Ortiz</h4><p class="text-gray-500 text-sm">Emprendedor Local</p></div></div><div class="flex star-rating mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-700 leading-relaxed">"Desde el primer contacto hasta la firma, el servicio fue impecable. La dedicación del equipo me dio una tranquilidad invaluable."</p></div>
                 </div>
             </div>
         </section>
 
         <!-- AI Chat Section -->
-        <section id="ia-chat" class="py-24 md:py-32 section-dark">
-            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="ia-chat" class="py-24 md:py-32 section-dark ai-section-bg">
+            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-20 animate-on-scroll"><h2 class="text-4xl md:text-5xl font-bold text-white mb-4 luxury-font">Asistente IA</h2><div class="luxury-divider"></div><p class="text-lg text-gray-400 max-w-3xl mx-auto">Utilice nuestro asistente inteligente para encontrar su propiedad ideal, resolver dudas o explorar opciones de financiamiento de forma instantánea.</p><p class="text-xs powered-by-text tracking-widest mt-4">POWERED BY WEAVYAGENCY</p></div>
                 <div class="max-w-3xl mx-auto animate-on-scroll">
                     <div class="glass-morphism rounded-xl p-8 shadow-lg">
@@ -391,10 +451,13 @@
         <section id="contacto" class="py-24 md:py-32 section-light">
             <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20 animate-on-scroll"><h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 luxury-font">Contacto</h2><div class="luxury-divider"></div><p class="text-lg text-gray-600 max-w-3xl mx-auto">Estamos a su disposición para atender sus requerimientos con la máxima discreción y profesionalismo.</p></div>
-                <div class="flex justify-center animate-on-scroll">
-                    <div class="max-w-lg w-full">
-                        <div class="bg-white rounded-lg p-10 shadow-md text-center">
-                            <div class="text-5xl text-green-500 mb-5"><i class="fab fa-whatsapp"></i></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200" class="rounded-lg shadow-xl w-full h-full object-cover">
+                    </div>
+                    <div class="animate-on-scroll" style="transition-delay: 0.2s;">
+                         <div class="bg-white rounded-lg p-10 shadow-md text-center contact-card">
+                            <div class="text-5xl text-green-500 mb-5 whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
                             <h3 class="text-3xl font-bold text-gray-900 mb-2 luxury-font">WhatsApp</h3>
                             <p class="text-gray-600 mb-6">Para una atención directa e inmediata.</p>
                             <p class="text-2xl font-semibold text-gray-800 mb-8">+52 1 315 152 8506</p>
@@ -410,7 +473,9 @@
     <footer class="bg-black py-16">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <a href="#inicio" class="text-3xl font-bold luxury-font tracking-wider text-white mb-4 inline-block">JB INMOBILIARIA</a>
+                <a href="#inicio" class="inline-block mb-4">
+                    <img src="https://i.imgur.com/K3SiOmK.png" alt="JB Inmobiliaria Logo" class="h-16">
+                </a>
                 <p class="text-gray-400 text-sm mb-6">Excelencia en Bienes Raíces de Lujo</p>
                 <div class="flex justify-center space-x-6 mb-8"><a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a><a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a></div>
                 <p class="text-gray-500 text-xs">© 2025 JB Inmobiliaria. Todos los derechos reservados. | <a href="#" class="hover:text-white">Términos de Servicio</a> | <a href="#" class="hover:text-white">Política de Privacidad</a></p>
@@ -456,16 +521,17 @@
         
         // --- Property Data & Filtering ---
         const properties = [
-            { id: 1, type: 'casa', price: 2500000, location: 'colinas', title: 'Villa en Colinas del Sol', image: 'https://images.unsplash.com/photo-1600585154340-be6164a83639?q=80&w=800' },
-            { id: 2, type: 'terreno', price: 800000, location: 'valle', title: 'Terreno en Valle Escondido', image: 'https://images.unsplash.com/photo-1588880653328-b87042379d9e?q=80&w=800' },
-            { id: 3, type: 'penthouse', price: 3200000, location: 'marina', title: 'Penthouse en La Marina', image: 'https://images.unsplash.com/photo-1613553423758-d8325363b3f2?q=80&w=800' },
-            { id: 4, type: 'casa', price: 1800000, location: 'valle', title: 'Residencia Familiar en Valle', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800' },
-            { id: 5, type: 'local', price: 1200000, location: 'marina', title: 'Local Comercial Frente al Mar', image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=800' },
-            { id: 6, type: 'terreno', price: 950000, location: 'colinas', title: 'Lote con Vista Panorámica', image: 'https://images.unsplash.com/photo-1627922446305-5a4a53279143?q=80&w=800' },
+            { id: 1, type: 'casa', price: 0, location: 'playa', title: 'Casa a 2 Cuadras de la Playa', image: 'https://i.imgur.com/XyViWzN.png', beds: 3, baths: 2, details: '10x20, cocina, sala/comedor, cochera techada, área de lavado, acceso independiente a 2da planta.' },
+            { id: 2, type: 'casa', price: 0, location: 'residencial', title: 'Casa con Patio para Alberca', image: 'https://i.imgur.com/uypvXJL.png', beds: 3, baths: 3, details: 'A/C en recámaras, cocina, comedor, sala, cochera para 2 coches. Terreno ejidal.' },
+            { id: 3, type: 'casa', price: 0, location: 'residencial', title: 'Casa con Escrituras', image: 'https://i.imgur.com/iAvmnBV.png', beds: 3, baths: 1, details: '10x20, sala, cocina, comedor, patio, estacionamiento al frente. Con escrituras.' },
+            { id: 4, type: 'casa', price: 0, location: 'melaque', title: 'Casa Perla en Melaque', image: 'https://i.imgur.com/Z5C8iNL.png', beds: 1, baths: 1, details: '6x20, a 2 cuadras del centro, sala, cocina, comedor, área de lavado, patio con espacio para 2da recámara.' },
+            { id: 5, type: 'casa', price: 0, location: 'residencial', title: 'Casa Amplia con Cisterna', image: 'https://i.imgur.com/i106i0R.png', beds: 2, baths: 2, details: '10x20, 2 recámaras amplias, cochera para 2 coches, cisterna 8000L. Terreno ejidal.' },
+            { id: 6, type: 'casa', price: 0, location: 'carretera', title: 'Casa Cerca de Carretera', image: 'https://i.imgur.com/AR188Xd.png', beds: 2, baths: 1, details: 'Cochera y jardín al frente, patio bardeado con espacio para alberca. Apta para crédito.' },
+            { id: 7, type: 'terreno', price: 0, location: 'playa-del-coco', title: 'Terreno en Playa del Coco', image: 'https://i.imgur.com/cqEnUXM.png', beds: 0, baths: 0, details: '20x50, con escrituras y todos los servicios disponibles.' }
         ];
 
         const propertyGrid = document.getElementById('property-grid');
-        const filters = document.querySelectorAll('#filter-type, #filter-price, #filter-location');
+        const filters = document.querySelectorAll('#filter-type');
 
         const renderProperties = (props) => {
             propertyGrid.innerHTML = '';
@@ -476,25 +542,31 @@
             props.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'premium-card rounded-lg overflow-hidden shadow-md animate-on-scroll';
+                let specsHTML = '';
+                if (p.type === 'casa') {
+                    specsHTML = `
+                        <div class="flex text-gray-600 space-x-4">
+                            <span><i class="fas fa-bed mr-1"></i> ${p.beds}</span>
+                            <span><i class="fas fa-bath mr-1"></i> ${p.baths}</span>
+                        </div>
+                    `;
+                }
                 card.innerHTML = `
                     <div class="h-64 bg-gray-200 relative property-image-container">
                         <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover property-image">
                         <div class="absolute top-4 right-4 bg-accent-gold text-white px-3 py-1 rounded-full text-xs uppercase font-bold">${p.type}</div>
                         <div class="property-overlay">
                             <div class="overlay-content">
-                                <a href="#" class="w-full text-center luxury-button py-2 px-4 rounded-lg text-sm font-semibold">Ver Detalles</a>
+                                <button class="w-full text-center luxury-button py-2 px-4 rounded-lg text-sm font-semibold contact-btn">Más Información</button>
                             </div>
                         </div>
                     </div>
                     <div class="p-6 bg-white">
                         <h3 class="text-xl font-bold text-gray-900 mb-2 luxury-font">${p.title}</h3>
-                        <p class="text-gray-500 mb-4 text-sm uppercase">${p.location.replace('-', ' ')}</p>
+                        <p class="text-gray-600 mb-4 text-sm">${p.details}</p>
                         <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                            <span class="text-xl price-luxury">$${p.price.toLocaleString()}</span>
-                            <div class="flex text-gray-600 space-x-4">
-                                <span><i class="fas fa-bed mr-1"></i> 3</span>
-                                <span><i class="fas fa-bath mr-1"></i> 4</span>
-                            </div>
+                            <span class="text-xl price-luxury">Precio a Tratar</span>
+                            ${specsHTML}
                         </div>
                     </div>
                 `;
@@ -505,17 +577,7 @@
 
         const filterProperties = () => {
             const type = document.getElementById('filter-type').value;
-            const price = document.getElementById('filter-price').value;
-            const location = document.getElementById('filter-location').value;
-            let filtered = properties.filter(p => {
-                const typeMatch = type === 'all' || p.type === type;
-                const locationMatch = location === 'all' || p.location === location;
-                const priceMatch = price === 'all' ||
-                    (price === '1' && p.price <= 1000000) ||
-                    (price === '2' && p.price > 1000000 && p.price <= 2000000) ||
-                    (price === '3' && p.price > 2000000);
-                return typeMatch && locationMatch && priceMatch;
-            });
+            let filtered = properties.filter(p => type === 'all' || p.type === type);
             renderProperties(filtered);
         };
 
@@ -597,11 +659,17 @@
         if (sendBtn) sendBtn.addEventListener('click', handleSendMessage);
         if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
         
-        // --- WhatsApp Button ---
+        // --- Contact Buttons ---
         const whatsappBtn = document.getElementById('whatsapp-btn');
         if (whatsappBtn) {
-            whatsappBtn.addEventListener('click', () => window.open('https://wa.me/5213151528506?text=Hola,%20estoy%20interesado%20en%20sus%20propiedades%20de%20lujo.', '_blank'));
+            whatsappBtn.addEventListener('click', () => window.open('https://wa.me/5213151528506?text=Hola,%20estoy%20interesado%20en%20sus%20propiedades.', '_blank'));
         }
+
+        document.body.addEventListener('click', function(e) {
+            if (e.target.closest('.contact-btn')) {
+                 window.open('https://wa.me/5213151528506?text=Hola,%20estoy%20interesado%20en%20una%20de%20sus%20propiedades.', '_blank');
+            }
+        });
     });
     </script>
 </body>
